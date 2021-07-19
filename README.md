@@ -1,8 +1,6 @@
 # Quickstart
 
-```
-docker build -t looking-glass-builder .
-docker container run --rm -it -v $(pwd):/build looking-glass-builder
+Run `rebuild.sh` script in order to build/rebuild the latest stable version.
 ```
 
 # Volume

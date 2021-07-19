@@ -16,21 +16,11 @@ RUN apt-get update && \
     wayland-protocols \
     curl
 
-RUN curl -SsL -o looking-glass.tar.gz https://looking-glass.io/ci/host/source?id=stable && \
-    tar -xvf looking-glass.tar.gz && \
-    mv looking-glass-*/ looking-glass/ && \
-    mkdir looking-glass/client/build && \
-    mkdir /build
-
+RUN mkdir /build
 VOLUME /build
-WORKDIR /looking-glass/client/build
+
+COPY build.sh /
+
+CMD ["/build.sh"]
 
 # RUN useradd -ms /bin/bash test
-
-RUN echo '#!/bin/sh\n\
-cmake ../\n\
-make\n\
-cp ./looking-glass-client /build/\n'\
-> build.sh && chmod +x build.sh
-
-CMD ["./build.sh"]
