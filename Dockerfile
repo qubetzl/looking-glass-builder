@@ -2,19 +2,39 @@ FROM debian:buster
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+ENV CC=/usr/bin/gcc
+ENV CXX=/usr/bin/g++
+
+RUN echo "deb http://deb.debian.org/debian buster-backports main" > /etc/apt/sources.list.d/debian-backports.list
 RUN apt-get update && \
+    apt-get install -y -t buster-backports libgles-dev && \
     apt-get install -y \
-    binutils-dev \
+    git \
+    vim \
+    less \
+    curl \
     cmake \
+    gcc \
+    g++ \
+    make \
+    gawk \
     fonts-freefont-ttf \
     libfontconfig1-dev \
-    libsdl2-dev \
-    libsdl2-ttf-dev \
+    libgmp-dev \
     libspice-protocol-dev \
-    libx11-dev \
     nettle-dev \
+    pkg-config \
+    binutils-dev \
+    libgl-dev \
+    libx11-dev \
+    libxss-dev \
+    libxi-dev \
+    libxinerama-dev \
+    libxcursor-dev \
+    libxpresent-dev \
+    libwayland-dev \
     wayland-protocols \
-    curl
+    libxkbcommon-dev
 
 RUN mkdir /build
 VOLUME /build
