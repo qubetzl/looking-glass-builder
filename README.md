@@ -33,7 +33,7 @@ sudo apt install fonts-freefont-ttf libfontconfig1 libgmp10 nettle-bin binutils 
 ```
 libwayland-bin
 wayland-protocols
-
+```
 
 
 ## From buster-backports
