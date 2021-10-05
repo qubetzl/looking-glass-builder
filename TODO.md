@@ -1,5 +1,7 @@
 # TODO
 This is a list of ideas, todos and a wish list for this project.
+## Generate README.md
+Setup generation of `README.md` per variant.
 ## Setup builder user
 Setup user to create the build instead of using root.
 ```bash

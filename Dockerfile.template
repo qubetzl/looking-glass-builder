@@ -1,0 +1,15 @@
+FROM %%FROM%%
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+ENV CC=/usr/bin/gcc
+ENV CXX=/usr/bin/g++
+
+RUN %%DEPENDENCY_COMMANDS%%
+
+RUN mkdir /build
+VOLUME /build
+
+COPY build.sh /
+
+CMD ["/build.sh"]
