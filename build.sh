@@ -3,20 +3,12 @@
 set -e
 set -u
 
-build_from_lg_site=false
+echo "Building GIT_REF: ${GIT_REF}"
 
-mkdir /looking-glass
-if [[ "${build_from_lg_site}" == "true" ]]; then
-    cd /looking-glass/
-    curl -SsL -o looking-glass.tar.gz "https://looking-glass.io/ci/host/source?id=stable"
-    tar --strip-components=1 -xvf looking-glass.tar.gz
-else
-    ref="bc65de598722bcf4f4c8af04e3be0084a11f19fb"
-    git clone https://github.com/gnif/LookingGlass.git /looking-glass/
-    cd /looking-glass/
-    git checkout "${ref}"
-    git submodule update --init --recursive
-fi
+git clone https://github.com/gnif/LookingGlass.git /looking-glass/
+cd /looking-glass/
+git checkout "${GIT_REF}"
+git submodule update --init --recursive
 
 mkdir /looking-glass/client/build
 cd /looking-glass/client/build
