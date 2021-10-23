@@ -10,6 +10,8 @@ cd /looking-glass/
 git checkout "${GIT_REF}"
 git submodule update --init --recursive
 
+abbreviated_ref="$(git rev-parse --short HEAD)"
+
 mkdir /looking-glass/client/build
 cd /looking-glass/client/build
 
@@ -24,8 +26,12 @@ cmake \
     ..
 make -j$(nproc)
 
-chown 1000:1000 looking-glass-client
+looking_glass_version="$(cat /looking-glass/client/build/VERSION)"
 
+# Generated version for the built binary with
+# looking glass version and abbreviated commit id
+built_version="${looking_glass_version}-${abbreviated_ref}"
 # Copy the built binary with version to /build volume
-version="$(cat /looking-glass/client/build/VERSION)"
-cp ./looking-glass-client "/build/looking-glass-client-${version}"
+dest_file="/build/looking-glass-client-${built_version}"
+cp ./looking-glass-client "${dest_file}"
+chown 1000:1000 "${dest_file}"
