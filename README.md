@@ -2,6 +2,21 @@
 
 The objective of this project is to provide pre-built binaries for [Looking Glass](https://github.com/gnif/LookingGlass).
 
+## Quickstart
+Open a Terminal window and run the commands below one by one:
+```bash
+git clone https://github.com/qubetzl/looking-glass-builder.git
+cd looking-glass-builder/
+./rebuild-debian.sh "Release/B5"
+```
+This would produce a binary in the following format `looking-glass-client-<version>-<commitid>` in the current directory e.g. `looking-glass-client-B5.0.1-3df7d30c`
+
+This is the Looking Glass Client executable.  
+You can run it with:
+```bash
+./looking-glass-client-B5.0.1-3df7d30c
+```
+
 ## Why?
 As of now (05.10.2021) building from source is the only option for acquiring a _client_ binary for Looking Glass. (There are likely good reasons for it to remain that way, but that doesn't mean we have to like it.)  
 For most people building from source can be intimidating and/or uncomfortable.  
