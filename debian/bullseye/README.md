@@ -1,10 +1,14 @@
 
-# Debian Buster Runtime dependencies
+# Debian Bullseye Runtime dependencies
 ## Stable repos
 ```
+libegl1
+libgl1
+libgles1
+libgles2
 libfontconfig1
 libgmp10
-libnettle6
+libhogweed6
 libbinutils
 libx11-6
 libxfixes3
@@ -21,9 +25,4 @@ fonts-dejavu-core
 libxkbcommon0
 libwayland-bin
 wayland-protocols
-```
-
-## From buster-backports
-```
-libegl1 libgles1 libgles2 libgl1
 ```
