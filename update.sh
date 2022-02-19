@@ -33,9 +33,11 @@ do
     file="$(filterJson "${variant}" ".file")"
     dir="$(filterJson "${variant}" ".directory")"
     from="$(filterJson "${variant}" ".from")"
-    dependencyCommands="$(filterJson "${variant}" ".dependency_commands | join(\" && \")")"
-    # Escape '/' and '&', since they are special characters for sed
-    dependencyCommandsEscaped="$(echo "${dependencyCommands}" | sed 's/\&/\\x26/g' | sed 's/\//\\x2F/g')"
+    # Combine dependency commands into one container layer
+    # and make them readable in generated Dockerfile (adds ' && \\n    ' between them)
+    dependencyCommands="$(filterJson "${variant}" ".dependency_commands | join(\" \\\\x26\\\\x26 \\\\x5C\\\\x0A    \")")"
+    # Escape '/', since it is special character for sed
+    dependencyCommandsEscaped="$(echo "${dependencyCommands}" | sed 's/\//\\x2F/g')"
     echo "file: ${file}"
     echo "dir: ${dir}"
     echo "from: ${from}"

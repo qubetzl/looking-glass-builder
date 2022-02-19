@@ -7,7 +7,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV CC=/usr/bin/gcc
 ENV CXX=/usr/bin/g++
 
-RUN apt-get update && apt-get install -y git cmake gcc g++ make gawk fonts-freefont-ttf libfontconfig1-dev libgmp-dev libspice-protocol-dev nettle-dev pkg-config binutils-dev libgl-dev libgles-dev libx11-dev libxss-dev libxi-dev libxinerama-dev libxcursor-dev libxpresent-dev libwayland-dev wayland-protocols libxkbcommon-dev
+RUN apt-get update && \
+    apt-get install -y git cmake gcc g++ make gawk fonts-freefont-ttf libfontconfig1-dev libgmp-dev libspice-protocol-dev nettle-dev pkg-config binutils-dev libgl-dev libgles-dev libx11-dev libxss-dev libxi-dev libxinerama-dev libxcursor-dev libxpresent-dev libwayland-dev wayland-protocols libxkbcommon-dev
 
 RUN mkdir /build
 VOLUME /build
