@@ -23,6 +23,7 @@ cmake \
     -DENABLE_X11=yes \
     -DENABLE_WAYLAND=yes \
     -DENABLE_LIBDECOR=no \
+    -DENABLE_PIPEWIRE=no \
     ..
 make -j$(nproc)
 
