@@ -26,3 +26,18 @@ libxkbcommon0
 libwayland-bin
 wayland-protocols
 ```
+
+### Audio
+```
+libsamplerate0
+```
+#### Pipewire
+```
+libpipewire-0.3-0
+```
+
+#### Pulse
+Likely, you already have it installed. If you do it would be better to avoid trying to install it manually.
+```
+libpulse0
+```

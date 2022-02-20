@@ -8,7 +8,7 @@ ENV CC=/usr/bin/gcc
 ENV CXX=/usr/bin/g++
 
 RUN apt-get update && \
-    apt-get install -y git mawk  cmake gcc g++ libegl-dev libgl-dev libgles-dev libfontconfig-dev libgmp-dev libspice-protocol-dev make nettle-dev pkg-config  binutils-dev  libx11-dev libxfixes-dev libxi-dev libxinerama-dev libxss-dev libxcursor-dev libxpresent-dev  libxkbcommon-dev libwayland-bin libwayland-dev wayland-protocols  fonts-dejavu-core
+    apt-get install -y git mawk  cmake gcc g++ libegl-dev libgl-dev libgles-dev libfontconfig-dev libgmp-dev libspice-protocol-dev make nettle-dev pkg-config  binutils-dev  libx11-dev libxfixes-dev libxi-dev libxinerama-dev libxss-dev libxcursor-dev libxpresent-dev  libxkbcommon-dev libwayland-bin libwayland-dev wayland-protocols  libsamplerate0-dev libpulse-dev  fonts-dejavu-core
 
 RUN mkdir /build
 VOLUME /build
