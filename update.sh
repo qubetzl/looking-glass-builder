@@ -22,6 +22,10 @@ function filterJson() {
     echo "${content}" | jq -r "${filter}"
 }
 
+function escape() {
+    echo "${1}" | sed 's/\//\\x2F/g'
+}
+
 variants="$(filterJson "${configJsonContent}" ".variants")"
 numberOfVariants="$(filterJson "${variants}" "length")"
 
@@ -33,16 +37,13 @@ do
     file="$(filterJson "${variant}" ".file")"
     dir="$(filterJson "${variant}" ".directory")"
     from="$(filterJson "${variant}" ".from")"
+    environmentVariables="$(filterJson "${variant}" ".environment_variables | to_entries | map(\"\(.key)=\(.value|tostring)\") | map(\"ENV \" + .) | join(\"\\\\x0A\")")"
     # Combine dependency commands into one container layer
     # and make them readable in generated Dockerfile (adds ' && \\n    ' between them)
     dependencyCommands="$(filterJson "${variant}" ".dependency_commands | join(\" \\\\x26\\\\x26 \\\\x5C\\\\x0A    \")")"
     # Escape '/', since it is special character for sed
-    dependencyCommandsEscaped="$(echo "${dependencyCommands}" | sed 's/\//\\x2F/g')"
-    echo "file: ${file}"
-    echo "dir: ${dir}"
-    echo "from: ${from}"
-    echo "dependencyCommands: ${dependencyCommands}"
-    echo "dependencyCommandsEscaped: ${dependencyCommandsEscaped}"
+    dependencyCommandsEscaped="$(escape "${dependencyCommands}")"
+    environmentVariablesEscaped="$(escape "${environmentVariables}")"
     
     mkdir -p "${dir}"
     dockerfile="${dir}/${file}"
@@ -52,5 +53,6 @@ do
     # Replace values
     sed -e "s/%%FROM%%/${from}/g" \
         -e "s/%%DEPENDENCY_COMMANDS%%/${dependencyCommandsEscaped}/g" \
+        -e "s/%%ENVIRONMENT_VARIABLES%%/${environmentVariablesEscaped}/g" \
     > "${dockerfile}"
 done

@@ -1,6 +1,6 @@
 FROM %%FROM%%
 
-ENV DEBIAN_FRONTEND=noninteractive
+%%ENVIRONMENT_VARIABLES%%
 
 ENV CC=/usr/bin/gcc
 ENV CXX=/usr/bin/g++
