@@ -9,6 +9,6 @@ GIT_REF="${1}"
 # Make sure we have the most up-to-date base image
 docker image pull debian:bullseye
 # Build builder image
-docker build -t looking-glass-builder -f debian/bullseye/Dockerfile .
+docker build -t looking-glass-builder:bullseye -f debian/bullseye/Dockerfile .
 # Build Looking Glass
-docker container run --rm -it --env GIT_REF="${GIT_REF}" -v $(pwd):/build looking-glass-builder
+docker container run --rm -it --env GIT_REF="${GIT_REF}" -v $(pwd):/build looking-glass-builder:bullseye
