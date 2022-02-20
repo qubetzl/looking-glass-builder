@@ -8,7 +8,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 
 ENV CC=/usr/bin/gcc
 ENV CXX=/usr/bin/g++
-
+ENV ENABLE_PIPEWIRE=no
 
 RUN mkdir /build
 VOLUME /build

@@ -9,7 +9,7 @@ RUN echo "deb http://deb.debian.org/debian buster-backports main" > /etc/apt/sou
 
 ENV CC=/usr/bin/gcc
 ENV CXX=/usr/bin/g++
-
+ENV ENABLE_PIPEWIRE=no
 
 RUN mkdir /build
 VOLUME /build

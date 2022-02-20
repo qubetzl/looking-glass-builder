@@ -19,11 +19,12 @@ cd /looking-glass/client/build
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_LINKER:FILEPATH=/usr/bin/ld \
-    -DENABLE_BACKTRACE=yes \
-    -DENABLE_X11=yes \
-    -DENABLE_WAYLAND=yes \
+    -DENABLE_BACKTRACE=${ENABLE_BACKTRACE-yes} \
+    -DENABLE_X11=${ENABLE_X11-yes} \
+    -DENABLE_WAYLAND=${ENABLE_WAYLAND-yes} \
     -DENABLE_LIBDECOR=no \
-    -DENABLE_PIPEWIRE=no \
+    -DENABLE_PIPEWIRE=${ENABLE_PIPEWIRE-yes} \
+    -DENABLE_PULSEAUDIO=${ENABLE_PULSEAUDIO-yes} \
     ..
 make -j$(nproc)
 
