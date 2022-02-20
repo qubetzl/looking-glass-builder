@@ -17,11 +17,11 @@ cd /looking-glass/client/build
 
 # Actually build Looking Glass
 cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_LINKER:FILEPATH=/usr/bin/ld \
     -DENABLE_BACKTRACE=yes \
     -DENABLE_X11=yes \
     -DENABLE_WAYLAND=yes \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_LINKER:FILEPATH=/usr/bin/ld \
     -DENABLE_LIBDECOR=no \
     ..
 make -j$(nproc)
