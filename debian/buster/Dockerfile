@@ -2,15 +2,14 @@
 # Please, do not edit directly.
 FROM debian:buster
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-ENV CC=/usr/bin/gcc
-ENV CXX=/usr/bin/g++
-
 RUN echo "deb http://deb.debian.org/debian buster-backports main" > /etc/apt/sources.list.d/debian-backports.list && \
     apt-get update && \
     apt-get install -y -t buster-backports libegl-dev libgl-dev libgles-dev && \
     apt-get install -y git mawk  cmake gcc g++ libfontconfig-dev libgmp-dev libspice-protocol-dev make nettle-dev pkg-config  binutils-dev  libx11-dev libxfixes-dev libxi-dev libxinerama-dev libxss-dev libxcursor-dev libxpresent-dev  libxkbcommon-dev libwayland-bin libwayland-dev wayland-protocols  libsamplerate0-dev libpulse-dev  fonts-dejavu-core
+
+ENV CC=/usr/bin/gcc
+ENV CXX=/usr/bin/g++
+
 
 RUN mkdir /build
 VOLUME /build

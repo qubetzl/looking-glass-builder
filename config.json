@@ -5,7 +5,7 @@
       "directory": "debian/buster",
       "file": "Dockerfile",
       "from": "debian:buster",
-      "environment_variables": {"DEBIAN_FRONTEND": "noninteractive"},
+      "environment_variables": {},
       "dependency_commands": [
         "echo \"deb http://deb.debian.org/debian buster-backports main\" > /etc/apt/sources.list.d/debian-backports.list",
         "apt-get update",
@@ -18,7 +18,7 @@
       "directory": "debian/bullseye",
       "file": "Dockerfile",
       "from": "debian:bullseye",
-      "environment_variables": {"DEBIAN_FRONTEND": "noninteractive"},
+      "environment_variables": {},
       "dependency_commands": [
         "apt-get update",
         "apt-get install -y git mawk  cmake gcc g++ libegl-dev libgl-dev libgles-dev libfontconfig-dev libgmp-dev libspice-protocol-dev make nettle-dev pkg-config  binutils-dev  libx11-dev libxfixes-dev libxi-dev libxinerama-dev libxss-dev libxcursor-dev libxpresent-dev  libxkbcommon-dev libwayland-bin libwayland-dev wayland-protocols  libsamplerate0-dev libpipewire-0.3-dev libpulse-dev  fonts-dejavu-core"
@@ -29,8 +29,9 @@
       "directory": "ubuntu/focal",
       "file": "Dockerfile",
       "from": "ubuntu:focal",
-      "environment_variables": {"DEBIAN_FRONTEND": "noninteractive"},
+      "environment_variables": {},
       "dependency_commands": [
+        "export DEBIAN_FRONTEND=noninteractive",
         "apt-get update",
         "apt-get install -y git mawk  cmake gcc g++ libegl-dev libgl-dev libgles-dev libfontconfig-dev libgmp-dev libspice-protocol-dev make nettle-dev pkg-config  binutils-dev  libx11-dev libxfixes-dev libxi-dev libxinerama-dev libxss-dev libxcursor-dev libxpresent-dev  libxkbcommon-dev libwayland-bin libwayland-dev wayland-protocols  libsamplerate0-dev libpulse-dev  fonts-dejavu-core"
       ]
