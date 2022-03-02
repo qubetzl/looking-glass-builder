@@ -9,12 +9,12 @@ git clone https://github.com/qubetzl/looking-glass-builder.git
 cd looking-glass-builder/
 ./rebuild-debian.sh "Release/B5"
 ```
-This would produce a binary in the following format `looking-glass-client-<version>-<commitid>` in the current directory e.g. `looking-glass-client-B5.0.1-3df7d30c`
+This would produce a binary in the following format `looking-glass-client-<version>` in the current directory e.g. `looking-glass-client-B5.0.1` or `looking-glass-client-B5-292-g88d60d4b3d` in the case of a bleeding edge build.
 
 This is the Looking Glass Client executable.  
 You can run it with:
 ```bash
-./looking-glass-client-B5.0.1-3df7d30c
+./looking-glass-client-B5.0.1
 ```
 
 ## Why?

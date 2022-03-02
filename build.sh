@@ -10,8 +10,6 @@ cd /looking-glass/
 git checkout "${GIT_REF}"
 git submodule update --init --recursive
 
-abbreviated_ref="$(git rev-parse --short HEAD)"
-
 mkdir /looking-glass/client/build
 cd /looking-glass/client/build
 
@@ -32,7 +30,7 @@ looking_glass_version="$(cat /looking-glass/client/build/VERSION)"
 
 # Generated version for the built binary with
 # looking glass version and abbreviated commit id
-built_version="${looking_glass_version}-${abbreviated_ref}"
+built_version="${looking_glass_version}"
 # Copy the built binary with version to /build volume
 dest_file="/build/looking-glass-client-${built_version}"
 cp ./looking-glass-client "${dest_file}"
